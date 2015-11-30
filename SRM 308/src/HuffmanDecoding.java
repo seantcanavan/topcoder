@@ -13,22 +13,21 @@ public class HuffmanDecoding {
 		System.out.println(HuffmanDecoding.decode("001101100101100110111101011001011001010", new String[]{"110","011","10","0011","00011","111","00010","0010","010","0000"}));
 	}
 
-	public static String decode(String archive, String[] dictionary)
-	{
+	public static String decode(String archive, String[] dictionary) {
 		String leftToDecode = archive;
 		String currentlyDecoding = "";
 		String decodedMessage = "";
-		
+
 		do // do while prevents a second check inside a while loop to check for length of toDecode before adding to decoding
 		{
 			currentlyDecoding = currentlyDecoding + leftToDecode.substring(0, 1); // grab the first character to work with and add it to 
 			leftToDecode = leftToDecode.substring(1, leftToDecode.length()); // remove the first character from what's left to decode
-			
-			for(int x = 0; x < dictionary.length; x++) // for each string in the dictionary
+
+			for (int x = 0; x < dictionary.length; x++) // for each string in the dictionary
 			{
 				if (currentlyDecoding.length() == dictionary[x].length()) // check if the value we have currently matches the length of any of the characters in the dictionary
 				{
-					if(dictionary[x].compareTo(currentlyDecoding) == 0) // if the lengths are the same compare the contents and if they're the same, decode
+					if (dictionary[x].compareTo(currentlyDecoding) == 0) // if the lengths are the same compare the contents and if they're the same, decode
 					{
 						decodedMessage = decodedMessage + HuffmanDecoding.LETTERS.charAt(x);
 						currentlyDecoding = "";
@@ -36,8 +35,7 @@ public class HuffmanDecoding {
 					}
 				}
 			}
-		}while(leftToDecode.length() != 0); // while there are characters in the input left to decode
-		
+		} while (leftToDecode.length() != 0); // while there are characters in the input left to decode
 		return decodedMessage;
 	}
 }
